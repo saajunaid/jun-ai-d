@@ -50,6 +50,7 @@ export type Project = {
   blurb: string;
   stack: string[];
   status?: string;
+  href?: string;
 };
 
 export const projects: Project[] = [
@@ -59,6 +60,7 @@ export const projects: Project[] = [
     blurb:
       "API-first platform unifying three production apps into one customer-keyed intelligence layer for 1M+ customers. Designed the target architecture: provider-routing LLM orchestration, an MCP tool surface, on-prem GPU inference, and a GKE + Apigee migration.",
     stack: ["LLM orchestration", "MCP", "vLLM", "GKE", "Apigee", "OAuth2/OIDC"],
+    href: "/work/ucip",
   },
   {
     name: "Customer 360 / ServeSight",
@@ -66,6 +68,7 @@ export const projects: Project[] = [
     blurb:
       "360° contact-centre intelligence unifying Pega, ServiceNow, Qfiniti and Cisco data. Architected the VIBO assistant's RAG integration — FAISS retrieval with gpt-4o, a resilient proxy with graceful keyword fallback and source citations.",
     stack: ["FAISS", "Azure OpenAI gpt-4o", "FastAPI", "React", "SQL Server"],
+    href: "/work/vibo",
   },
   {
     name: "AI Agent Assist",
@@ -212,5 +215,26 @@ export const concepts: Concept[] = [
     summary:
       "Azure OpenAI vs Ollama vs vLLM, what a model gateway does, and how to run agents on local open-source models.",
     tags: ["vLLM", "Ollama", "LiteLLM", "GPU"],
+  },
+  {
+    slug: "embeddings",
+    title: "Embeddings & Vector Space",
+    summary:
+      "How text becomes numbers that capture meaning — the foundation under search, RAG, and recommendations.",
+    tags: ["Embeddings", "Vectors", "Semantics"],
+  },
+  {
+    slug: "agentic-pipelines",
+    title: "Agentic Pipelines",
+    summary:
+      "Why a chain of specialist agents with gates beats one giant prompt — the pattern behind my dev tools.",
+    tags: ["Agents", "Pipelines", "TDD"],
+  },
+  {
+    slug: "fine-tuning",
+    title: "Fine-Tuning vs RAG vs Prompting",
+    summary:
+      "The three ways to adapt an LLM to your needs — and how to choose the cheapest one that works.",
+    tags: ["Fine-tuning", "RAG", "Prompting"],
   },
 ];

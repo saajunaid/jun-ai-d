@@ -1,0 +1,61 @@
+export const metadata = {
+  title: "Agentic Pipelines | Junaid Shaik",
+  description:
+    "Why a chain of specialist agents with explicit gates beats one giant prompt — the pattern behind my published dev tools.",
+};
+
+<p className="kicker">Note · Agents · Pipelines</p>
+
+# Agentic Pipelines
+
+A single LLM chat is great for one-shot answers, but it drifts on long, multi-step work — it
+forgets constraints, skips steps, and you can't tell where it went wrong. An **agentic
+pipeline** fixes this by breaking the work into **stages**, each handled by a **specialist
+agent**, with an explicit **gate** between them.
+
+## One big prompt vs a pipeline
+
+```text
+Single prompt:   intent ─────────────────────────────► output   (hope it's right)
+
+Pipeline:        intent → Plan → ✅gate → Implement → Test → ✅gate → Review → ✅gate → Ship
+                          each stage = a focused agent; nothing advances past a failed gate
+```
+
+The gates are the point. Nothing moves forward until the previous step **passes a check** —
+plan approved, tests green, review clean. The result is AI-assisted work that stays
+disciplined instead of confidently wrong.
+
+## Why specialist agents
+
+- **Focus beats generality.** A "planner" prompt, a "tester" prompt and a "reviewer" prompt
+  each do one job well, with their own instructions and context.
+- **Clean context.** Each agent works in its own window, so the main thread doesn't drown in
+  irrelevant detail.
+- **Composability.** Stages can be reordered, reused across projects, and run in parallel.
+- **Determinism where it matters.** Routing between stages is rule-based, not left to chance.
+
+## Gates and modes
+
+A good pipeline lets you dial the autonomy:
+
+| Mode | Behaviour |
+|---|---|
+| **Supervised** | You approve every gate — for high-stakes changes |
+| **Assisted** | Auto-advances, pausing only at key checkpoints |
+| **Autopilot** | Runs end-to-end after one confirmation — for well-scoped work |
+
+## This is what I build
+
+My published developer tools — **junai**, **ptarmigan**, and **claudster** — are exactly
+this pattern: specialist agents (plan, implement, test, review, ship), explicit quality
+gates, TDD enforced inside the implementation loop, and [MCP](/learn/mcp) tools driving the
+transitions. The same idea scales to enterprise AI: route a task to the right agent, ground
+it with [retrieval](/learn/rag), and never skip the check.
+
+> Agentic pipelines turn an LLM from a clever improviser into a dependable delivery system —
+> structure and gates are what make AI trustworthy on real work.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/mcp">Model Context Protocol</a> · <a href="/learn/llm-serving">Serving LLMs</a>
+</p>

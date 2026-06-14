@@ -11,12 +11,39 @@ html {
   scroll-behavior: smooth;
 }
 
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* lynx blink: hold eyes open, flash closed briefly every cycle */
+.lynx-blink {
+  opacity: 0;
+  animation: blink 5.5s steps(1, end) infinite;
+}
+@keyframes blink {
+  0%, 94%, 100% { opacity: 0; }
+  95%, 98% { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .animate-fade-up {
+  .animate-fade-up,
+  .lynx-blink {
     animation: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 

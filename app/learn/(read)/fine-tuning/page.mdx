@@ -1,0 +1,51 @@
+export const metadata = {
+  title: "Fine-Tuning vs RAG vs Prompting | Junaid Shaik",
+  description:
+    "The three ways to adapt an LLM to your needs — and how to choose the cheapest one that actually works.",
+};
+
+<p className="kicker">Note · Fine-tuning · RAG · Prompting</p>
+
+# Fine-Tuning vs RAG vs Prompting
+
+There are three ways to make a general LLM do *your* job. They're often pitched as rivals,
+but they solve different problems — and the right instinct is to reach for the cheapest one
+first.
+
+## The three levers
+
+```text
+Prompting     →  tell the model what to do, in the request        (minutes,  $)
+RAG           →  give the model the right facts at query time      (days,    $$)
+Fine-tuning   →  retrain the model's weights on your examples      (weeks,  $$$)
+```
+
+## When to use which
+
+| Need | Best tool | Why |
+|---|---|---|
+| Change tone, format, or task | **Prompting** | Instant, no infrastructure |
+| Answer from current/private data | **RAG** | Facts stay fresh; answers cite sources |
+| Teach a consistent *style* or behaviour | **Fine-tuning** | Bakes the pattern into the model |
+| Domain jargon the model keeps missing | Fine-tuning *or* RAG | Depends on whether it's facts or phrasing |
+
+The trap is reaching for fine-tuning first. It's the most expensive lever, it goes stale the
+moment your data changes, and it can't cite its sources. For *"answer questions about live
+data,"* **RAG almost always wins.**
+
+## The mental rule
+
+> **Prompting** changes *instructions*. **RAG** changes *knowledge*. **Fine-tuning** changes
+> *behaviour*. Match the lever to what's actually wrong — and start cheap.
+
+## How this shows up in my work
+
+For the customer-facing systems I build, the data changes constantly (calls, cases, revenue),
+so [**RAG**](/learn/rag) is the right tool — fresh, grounded, and auditable via source
+citations. Prompting handles task and format. Fine-tuning is reserved for the narrow cases
+where a model must learn a fixed *behaviour* that prompting can't reliably enforce — and only
+once the cheaper levers have been exhausted.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/rag">Retrieval-Augmented Generation</a> · <a href="/learn/embeddings">Embeddings</a>
+</p>

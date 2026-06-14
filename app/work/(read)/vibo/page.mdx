@@ -1,0 +1,65 @@
+export const metadata = {
+  title: "VIBO — RAG Assistant for the Contact Centre | Junaid Shaik",
+  description:
+    "Case study: architecting a resilient RAG integration that gives contact-centre agents grounded, source-cited answers from real customer history.",
+};
+
+<p className="kicker">Case Study · RAG · Build</p>
+
+# VIBO — A RAG Assistant for the Contact Centre
+
+**Role:** Architect of the integration · **Stack:** FAISS · Azure OpenAI gpt-4o · FastAPI · React
+
+> Give contact-centre agents a natural-language assistant that answers from a customer's real
+> history — without ever leaving them with a broken tool.
+
+## The problem
+
+Agents had a chat widget driven by a keyword + rules engine. It could only return canned
+templates — it couldn't answer novel questions or reason across a customer's calls, cases, and
+revenue. Meanwhile a backend team had built a **RAG service** (FAISS + `gpt-4o`) but it was
+new, unproven, and not safe to put directly in front of agents.
+
+## What I designed
+
+The integration architecture — how to adopt a powerful-but-unproven AI service **safely**.
+The chosen pattern routes chat through the existing app as a **proxy with a fallback**:
+
+```text
+VIBO widget → ServeSight API → RAG service (FAISS → gpt-4o) → grounded answer
+                    │
+                    └─ on timeout / error / service down
+                          → keyword engine (graceful fallback, same question)
+```
+
+I evaluated four options (no change, direct browser→AI calls, proxy routing, full replacement)
+against conversational quality, resilience, security, and risk — and selected **proxy
+routing** as the only option that adds generative answers *while* guaranteeing agents never
+lose the tool.
+
+## Why the proxy pattern won
+
+| Property | Benefit |
+|---|---|
+| **One stable surface** | The widget never changes which endpoint it calls |
+| **Graceful fallback** | RAG downtime degrades to a keyword answer, not a blank screen |
+| **No secrets in the browser** | The AI service is called server-to-server |
+| **Feature-flagged** | RAG can be toggled and tuned per environment |
+| **Source-cited** | Answers carry citations (transcript / case IDs) for trust |
+
+## How the RAG works
+
+The assistant retrieves a customer's history from a [FAISS](/learn/faiss) index (built with
+[embeddings](/learn/embeddings)), hands the retrieved facts plus structured data to `gpt-4o`,
+and returns a grounded, cited answer. A full walkthrough lives in the note
+**[How VIBO RAG works](/learn/vibo-rag)**.
+
+## Why it matters
+
+This is the difference between an AI feature you can put in front of customers and a demo you
+can't trust. The win wasn't the model — it was the **architecture around it**: grounded,
+cited, feature-flagged, and fallback-protected.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/vibo-rag">How VIBO RAG works</a> · <a href="/work/ucip">UCIP case study</a>
+</p>

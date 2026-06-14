@@ -1,0 +1,67 @@
+export const metadata = {
+  title: "UCIP — Unified Customer Intelligence Platform | Junaid Shaik",
+  description:
+    "Case study: architecting an API-first platform that unifies three production apps into one customer-keyed intelligence layer with LLM orchestration, MCP, and on-prem GPU serving.",
+};
+
+<p className="kicker">Case Study · Architecture</p>
+
+# UCIP — Unified Customer Intelligence Platform
+
+**Role:** Architect · **Status:** Architecture & design, grounded in three live applications
+
+> A blueprint to turn three siloed-but-working applications into a single, API-first customer
+> intelligence platform — without a risky big-bang rewrite.
+
+## The problem
+
+Three production applications each held part of the customer picture — interactions and
+sentiment, survey feedback, and field-appointment diagnostics — across multiple databases and
+**1M+ customers**. Each had its own auth, its own data access, its own LLM usage. There was no
+single way for a person, a dashboard, or an AI agent to ask *"tell me everything about this
+customer."*
+
+## The decision: reuse, don't rebuild
+
+The core architectural call was **reuse over rewrite**: keep the three proven applications as
+domain engines and add a thin platform shell on top, rather than rebuilding mature logic.
+
+```text
+NEW (small): UCIP shell
+  [ API Gateway ] [ Auth/Policy ] [ Aggregation ] [ Cache ] [ MCP tools ]
+         │              │              │
+         ▼              ▼              ▼
+REUSED (large): existing domain applications
+  Customer 360  │  NPS Intelligence  │  Appointment Assist
+```
+
+This delivers value early (a unified API and shared identity), avoids parity risk, and allows
+an incremental, module-by-module migration with fallback paths the whole way.
+
+## The architecture
+
+A single **customer key** (`customer_number`) becomes the universal join across systems,
+backfilled from the existing cross-database lookup logic. On top of it:
+
+| Layer | Design |
+|---|---|
+| **Edge** | API gateway (Apigee / Cloud Gateway) — auth mediation, quotas, spike-arrest, analytics |
+| **API** | FastAPI domain modules + an aggregation service that fans out across domains in parallel |
+| **Identity** | A canonical `customer_master` table resolving fixed + mobile accounts |
+| **LLM** | A provider-routing orchestration layer (cloud + on-prem), task-based routing and caching |
+| **Agents** | An [MCP](/learn/mcp) tool surface so AI agents pull a unified view through one governed interface |
+| **Compute** | On-prem GPU serving (vLLM) for open-source models, alongside managed cloud models |
+| **Security** | OAuth2 / OIDC + scoped API keys; RBAC-governed, fully audited data access |
+| **Runtime** | Containerised on GKE, migrating off Windows services |
+
+## Why it matters
+
+UCIP shows the pattern I bring to enterprise AI: **make the data addressable, make access
+governed and audited, and expose it to both humans and agents through one contract** — while
+de-risking delivery by reusing what already works. It pairs a pragmatic migration strategy
+with a forward-looking platform: [RAG](/learn/rag), [agents](/learn/agentic-pipelines), and
+[flexible model serving](/learn/llm-serving) all plug into the same shell.
+
+<p className="text-sm text-muted">
+Related: <a href="/work/vibo">VIBO RAG case study</a> · <a href="/learn/mcp">Model Context Protocol</a>
+</p>

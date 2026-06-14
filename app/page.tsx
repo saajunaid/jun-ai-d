@@ -7,15 +7,8 @@ import {
   tools,
   concepts,
 } from "@/lib/content";
-
-const LYNX = [
-  "  /\\   /\\",
-  "  \\ \\_/ /",
-  "  /`o o`\\",
-  " (   ^   )",
-  "  \\ '-' /",
-  "  /|   |\\",
-].join("\n");
+import { Reveal } from "@/components/Reveal";
+import { Lynx } from "@/components/Lynx";
 
 export default function Home() {
   return (
@@ -25,12 +18,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-teal-400/10 blur-[120px]" />
         <div className="container-x relative py-24 md:py-32">
           <div className="mb-8 flex items-center gap-4 animate-fade-up md:gap-6">
-            <pre
-              aria-hidden="true"
-              className="select-none font-mono text-[9px] leading-[1.15] text-mint/80 md:text-[11px]"
-            >
-              {LYNX}
-            </pre>
+            <Lynx />
             <div>
               <div className="font-display text-4xl font-bold lowercase tracking-tight text-white md:text-5xl">
                 jun<span className="text-mint">ai</span>d
@@ -75,11 +63,13 @@ export default function Home() {
       <section id="expertise" className="container-x py-20">
         <SectionHead kicker="What I do" title="Expertise" />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {capabilities.map((c) => (
-            <div key={c.title} className="card p-6">
-              <h3 className="font-display text-lg font-semibold text-white">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{c.body}</p>
-            </div>
+          {capabilities.map((c, i) => (
+            <Reveal key={c.title} delay={i * 60} className="h-full">
+              <div className="card h-full p-6">
+                <h3 className="font-display text-lg font-semibold text-white">{c.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{c.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -92,29 +82,39 @@ export default function Home() {
           sub="Grounded in real, shipped (and shipping) projects — not slideware."
         />
         <div className="grid gap-5 lg:grid-cols-2">
-          {projects.map((p) => (
-            <article key={p.name} className="card flex flex-col p-7">
-              <div className="mb-3 flex items-center gap-3">
-                <span className="pill">{p.tag}</span>
-                {p.status && (
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-mint">
-                    ● {p.status}
-                  </span>
-                )}
-              </div>
-              <h3 className="font-display text-xl font-bold text-white">{p.name}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{p.blurb}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-md border border-white/10 bg-white/5 px-2 py-1 font-mono text-[11px] text-[#9fe3ec]"
+          {projects.map((p, i) => (
+            <Reveal key={p.name} delay={(i % 2) * 80} className="h-full">
+              <article className="card flex h-full flex-col p-7">
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="pill">{p.tag}</span>
+                  {p.status && (
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-mint">
+                      ● {p.status}
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-display text-xl font-bold text-white">{p.name}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{p.blurb}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-md border border-white/10 bg-white/5 px-2 py-1 font-mono text-[11px] text-[#9fe3ec]"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+                {p.href && (
+                  <Link
+                    href={p.href}
+                    className="mt-5 inline-block text-sm font-medium text-mint hover:underline"
                   >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </article>
+                    Read the case study →
+                  </Link>
+                )}
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>

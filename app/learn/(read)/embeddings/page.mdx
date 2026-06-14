@@ -1,0 +1,62 @@
+export const metadata = {
+  title: "Embeddings & Vector Space | Junaid Shaik",
+  description:
+    "How text becomes numbers that capture meaning — the foundation under semantic search, RAG, and recommendations.",
+};
+
+<p className="kicker">Note · Embeddings · Vectors</p>
+
+# Embeddings & Vector Space
+
+An **embedding** is a list of numbers (a **vector**) that represents the *meaning* of a
+piece of text. An embedding model reads text and places it as a point in a high-dimensional
+space, arranged so that **similar meanings land near each other** — regardless of the exact
+words used.
+
+## The key idea: meaning becomes geometry
+
+```text
+"can't activate my SIM"    ─┐
+"SIM activation failed"     ├─► cluster together (same meaning)
+"new SIM won't connect"    ─┘
+
+"my bill is too high"      ───► sits far away (different meaning)
+```
+
+Because closeness = similarity, you can now do maths on language: *find the nearest texts*,
+*group similar ones*, *rank by relevance*. That's the engine under semantic search and RAG.
+
+## Why not just match keywords?
+
+Keyword search fails when people say the same thing differently. "Fix my broadband" and
+"internet is down" share no words but mean the same. Embeddings capture the **meaning**, so
+the match still works.
+
+| | Keyword search | Embedding search |
+|---|---|---|
+| "internet down" vs "broadband not working" | ✗ no match | ✓ matches |
+| Typos / synonyms | Fragile | Robust |
+| Understands context | No | Yes |
+
+## A few practical truths
+
+- **Dimensions are fixed by the model.** Our setup uses `text-embedding-3-small` → **1536**
+  numbers per vector. Every vector lives in the same 1536-dimensional space.
+- **Always embed with one model.** Vectors from different models aren't comparable — mixing
+  them quietly destroys search quality.
+- **Distance = similarity.** Cosine similarity (the angle between vectors) is the usual
+  measure of "how close in meaning."
+- **They're not just for text.** The same idea embeds images, audio, and code.
+
+## Where embeddings show up in my work
+
+They're the first step of every RAG system I build: text → embedding → stored in a
+[FAISS](/learn/faiss) index → searched at query time to retrieve the right context for the
+LLM. No embeddings, no [retrieval](/learn/rag).
+
+> Embeddings are the bridge between human language and machine maths. Get them right and
+> everything downstream — search, RAG, clustering — just works.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/faiss">FAISS, explained</a> · <a href="/learn/rag">Retrieval-Augmented Generation</a>
+</p>
