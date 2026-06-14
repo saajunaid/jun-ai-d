@@ -1,3 +1,0 @@
-{"ts": "2026-06-14T14:19:57+00:00", "session": "030d97b3-8a83-4840-bd25-e692cc811ee3", "input": 33094, "output": 225864, "cache_write": 678205, "cache_read": 31884351, "est_cost_usd": 77.9791, "models": ["claude-opus-4-8"]}
-{"ts": "2026-06-14T16:23:26+00:00", "session": "030d97b3-8a83-4840-bd25-e692cc811ee3", "input": 33098, "output": 229526, "cache_write": 1148539, "cache_read": 31911381, "est_cost_usd": 87.1131, "models": ["claude-opus-4-8"]}
-{"ts": "2026-06-14T16:29:06+00:00", "session": "030d97b3-8a83-4840-bd25-e692cc811ee3", "input": 33509, "output": 238454, "cache_write": 1159919, "cache_read": 34938049, "est_cost_usd": 92.5422, "models": ["claude-opus-4-8"]}
