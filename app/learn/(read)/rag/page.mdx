@@ -1,0 +1,63 @@
+export const metadata = {
+  title: "Retrieval-Augmented Generation (RAG) | Junaid Shaik",
+  description:
+    "Why grounding an LLM in retrieved facts beats relying on its memory — the core pattern behind trustworthy AI features.",
+};
+
+<p className="kicker">Note · RAG · LLM · Grounding</p>
+
+# Retrieval-Augmented Generation
+
+A large language model knows a lot about the world in general, but **nothing** about your
+customers, your tickets, or what happened yesterday. Ask it directly and it will either
+refuse or, worse, **make something up that sounds right**. RAG fixes this by giving the
+model the relevant facts *before* it answers.
+
+## The core idea
+
+```text
+Question
+   │
+   ├─►  RETRIEVE   find the relevant facts from your data   (e.g. via FAISS)
+   │
+   ├─►  AUGMENT    paste those facts into the prompt
+   │
+   └─►  GENERATE   the LLM answers using only those facts   (and cites them)
+```
+
+The model stops being an oracle you hope is right, and becomes a **reasoning layer over
+your own data** that you can verify.
+
+## Why not just fine-tune the model?
+
+| | RAG | Fine-tuning |
+|---|---|---|
+| Fresh data | Instantly (re-index) | Re-train each time |
+| Traceability | Cites its sources | Opaque |
+| Cost & effort | Low | High (GPUs, datasets) |
+| Best for | Facts that change | Style, format, behaviour |
+
+For "answer questions about live customer data," RAG is almost always the right first move.
+Fine-tuning is for teaching a model *how* to respond, not *what* the latest facts are.
+
+## What makes RAG trustworthy
+
+- **Grounding** — the answer is built from retrieved facts, not the model's memory.
+- **Citations** — every answer can point back to its source documents.
+- **Freshness** — update the data and re-index; no re-training.
+- **Guardrails** — if retrieval finds nothing relevant, the system can decline rather than
+  guess.
+
+## A real example
+
+In the VIBO assistant, an agent asks *"what has this customer been calling about?"* RAG
+retrieves that customer's history, hands it to `gpt-4o`, and returns a natural-language
+summary **with source IDs** — instead of a generic, possibly-wrong guess. If retrieval or
+the model fails, the system falls back to a safe keyword response.
+
+> RAG is the difference between an AI feature you can put in front of customers and a demo
+> you can't trust. Retrieve, ground, cite, and always keep a fallback.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/faiss">FAISS, explained</a> · <a href="/learn/vibo-rag">How VIBO RAG works</a> · <a href="/learn/mcp">Model Context Protocol</a>
+</p>

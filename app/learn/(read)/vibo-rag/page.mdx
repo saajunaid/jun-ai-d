@@ -1,0 +1,114 @@
+export const metadata = {
+  title: "How VIBO RAG Works | Junaid Shaik",
+  description:
+    "End-to-end walkthrough of a production RAG assistant: FAISS retrieval, gpt-4o generation, and a resilient proxy + fallback integration.",
+};
+
+<p className="kicker">Note · RAG · Architecture</p>
+
+# How VIBO RAG Works
+
+> **VIBO** is a contact-centre assistant that answers agents' questions grounded in real
+> customer history. It uses **FAISS** for retrieval and **Azure OpenAI gpt-4o** for
+> generation. I architected the **integration** — the resilient proxy and fallback that
+> make it safe for production — while a backend team built the FAISS index service.
+
+## The one-line mental model
+
+FAISS turns *"find the customer history relevant to this question"* into **math**: every
+piece of text becomes a vector (a list of 1536 numbers); *"relevant"* means *"closest in
+vector space."* FAISS stores those vectors and finds the nearest ones fast. The LLM then
+answers **only** from what FAISS retrieved — which is what keeps it grounded instead of
+making things up.
+
+`Retrieval (FAISS) + Generation (gpt-4o) = RAG`
+
+## The setup at a glance
+
+| Component | In our setup |
+|---|---|
+| Vector store | **FAISS** (migrated from ChromaDB), persisted to disk |
+| Documents indexed | **~7,800** — one per customer, from a customer-summary table |
+| Embedding model | **Azure OpenAI `text-embedding-3-small`** → **1536-dim** vectors |
+| Generation model | **Azure OpenAI `gpt-4o`** |
+| Scope | Per customer → the Search page only |
+
+The 1536 isn't arbitrary — it's the output size of the embedding model. Every vector,
+stored or queried, is a point in the same 1536-dimensional space.
+
+## Phase 1 — Indexing (offline, run periodically)
+
+```text
+Customer summaries (one row per customer)
+        │  for each summary text
+        ▼
+Azure OpenAI text-embedding-3-small  ──►  [1536-dim vector]
+        │
+        ▼
+FAISS index (~7,800 vectors)  +  id map (vector → customer_id)
+        │
+        ▼
+persisted to disk
+```
+
+This is rebuilt whenever the summaries change.
+
+## Phase 2 — Query (live, per question)
+
+```text
+Agent question ("what's this customer calling about?")
+        │
+        ▼
+embed the question  ──►  [1536-dim query vector]   ← SAME embedding model (essential)
+        │
+        ▼
+FAISS.search(query_vector, k)  ──►  k nearest vectors  ──►  customer_id / source docs
+        │
+        ▼
+retrieved text + structured data (cases, calls, revenue, risk)  ──►  gpt-4o prompt
+        │
+        ▼
+grounded, source-cited answer
+```
+
+FAISS never writes prose — it only returns **which** documents are relevant. The LLM only
+ever sees retrieved facts.
+
+## The integration I architected (the resilient part)
+
+```text
+VIBO widget → ServeSight FastAPI → RAG API → FAISS → gpt-4o → answer
+                    │
+                    └─ on timeout / error / service down
+                          → keyword + spaCy orchestrator (graceful fallback)
+```
+
+Rather than let the browser call the AI service directly, ServeSight's own API **proxies**
+the request. That single decision buys a lot:
+
+- **One stable surface** — the widget always calls the same endpoint; nothing breaks if the
+  AI service moves or changes.
+- **Graceful fallback** — a brand-new AI service can't be allowed to leave agents with a
+  broken tool. On failure it degrades to a keyword answer for the same question.
+- **No secrets in the browser** — the AI service is called server-to-server; its URL is
+  never exposed.
+- **Feature-flag control** — RAG can be switched on/off and tuned per environment.
+- **Progressive enhancement** — only the Search page is upgraded; other pages are untouched.
+
+## A design nuance worth knowing
+
+The index holds **one vector per customer** (built from each customer's summary), not one
+per call or case. That makes retrieval **coarse** — a question maps to a customer's overall
+summary, not the exact sentence that answers it. It's good enough here because the LLM also
+receives the structured data alongside. The obvious next step for finer search is to
+re-index at **chunk level**: one vector per transcript segment or case event.
+
+## Why this pattern matters
+
+This is the blueprint for trustworthy enterprise AI: **retrieve real facts, generate over
+them, cite the sources, and never remove the safety net.** The model becomes a reasoning
+layer over your data — not an unpredictable oracle.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/faiss">FAISS, explained</a> · <a href="/learn/rag">Retrieval-Augmented Generation</a>
+</p>

@@ -1,0 +1,63 @@
+export const metadata = {
+  title: "Serving LLMs: Cloud & On-Prem | Junaid Shaik",
+  description:
+    "Azure OpenAI vs Ollama vs vLLM, what a model gateway does, and how to run AI agents on local open-source models.",
+};
+
+<p className="kicker">Note · vLLM · Ollama · GPU</p>
+
+# Serving LLMs: Cloud & On-Prem
+
+"Using an LLM" really means **calling a model that runs somewhere**. Where it runs — a cloud
+API or your own GPUs — drives cost, privacy, latency, and control. Most serious systems use
+a mix.
+
+## The three ways I serve models
+
+| Option | What it is | Trade-off |
+|---|---|---|
+| **Azure OpenAI** | Managed cloud API (GPT-4o, GPT-4, Whisper, embeddings) | Best quality, zero ops — but per-token cost and data leaves your network |
+| **Ollama** | Dead-simple local runner for open-source models | Great for dev & light tasks; modest throughput |
+| **vLLM** | High-throughput GPU server for open-source models | Production-grade local serving; needs real GPUs |
+
+The pattern: **managed cloud where quality matters most, on-prem open-source where privacy,
+cost, or volume dominate.**
+
+## Why run models on-prem at all?
+
+- **Data privacy** — sensitive customer data never leaves your network.
+- **Cost at scale** — batch jobs over millions of records get expensive per-token.
+- **Control** — pin versions, fine-tune, and avoid rate limits.
+
+Open-source models like **Qwen** and **GLM**, served via vLLM on a GPU, are now strong
+enough to handle many production tasks that once required a frontier cloud model.
+
+## The model gateway (one API, many models)
+
+You don't want every app hard-wired to one provider. A **gateway** sits in the middle and
+speaks one consistent API to your apps while routing to whatever model is best for the task.
+
+```text
+        ┌──────────────────────────────┐
+apps ──►│  gateway (e.g. LiteLLM)       │──►  Azure OpenAI  (frontier quality)
+        │  one API, smart routing       │──►  vLLM / Qwen   (on-prem, high volume)
+        └──────────────────────────────┘──►  Ollama / GLM  (fast, local, cheap)
+```
+
+This makes models **swappable**: route cheap/bulk work to a local model, send the hardest
+reasoning to a cloud model, and change the mix without touching application code.
+
+## A concrete example
+
+My **claudster** plugin uses exactly this idea: a LiteLLM gateway lets the *same* agents run
+on a frontier cloud model **or** on local open-source models via vLLM/Ollama — so a team can
+keep sensitive code on-prem while preserving the full agent workflow. In the contact-centre
+platforms, transcription and summaries run on **Azure OpenAI**, while heavier diagnostic and
+batch workloads run on **on-prem Qwen via vLLM**.
+
+> Serving strategy is an architecture decision, not a default. Match each task to the
+> cheapest model that's good enough — and keep models swappable behind a gateway.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/mcp">Model Context Protocol</a> · <a href="/learn/rag">Retrieval-Augmented Generation</a>
+</p>

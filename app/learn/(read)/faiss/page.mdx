@@ -1,0 +1,74 @@
+export const metadata = {
+  title: "FAISS, Explained | Junaid Shaik",
+  description:
+    "What a vector index actually does, how embeddings turn text into searchable points, and how FAISS is used in production RAG.",
+};
+
+<p className="kicker">Note · Vectors · Search</p>
+
+# FAISS, Explained
+
+**FAISS** (Facebook AI Similarity Search) is a library that does one thing extremely well:
+given a pile of vectors and a query vector, it finds the **nearest** ones, fast. It is not
+a database and not an AI model — it's the search engine that makes retrieval possible.
+
+## Step 1 — Text becomes vectors (embeddings)
+
+An **embedding model** reads a piece of text and outputs a fixed-length list of numbers — a
+**vector** — that captures its meaning. Texts that mean similar things land close together
+in that space.
+
+```text
+"customer can't activate SIM"   ──►  [0.02, -0.41, 0.13, … ]   (1536 numbers)
+"SIM activation failing"        ──►  [0.03, -0.39, 0.15, … ]   ← very close vector
+"billing dispute on invoice"    ──►  [-0.22, 0.08, -0.30, … ]  ← far away
+```
+
+The number of dimensions (1536 in our setup, from `text-embedding-3-small`) is fixed by the
+model. Every vector lives in the same space, which is what makes them comparable.
+
+## Step 2 — FAISS stores and searches them
+
+FAISS keeps all those vectors in an **index** and answers one question very quickly:
+*"which stored vectors are closest to this one?"*
+
+```text
+query vector  ──►  FAISS.search(vector, k=5)  ──►  the 5 nearest stored vectors
+                                                    (and their IDs)
+```
+
+"Closest" is measured by a distance/similarity metric (e.g. cosine or L2). The result is
+**IDs**, which you map back to the original documents.
+
+## Index types (in plain terms)
+
+| Type | What it does | When to use |
+|---|---|---|
+| **Flat** (exact) | Compares the query to every vector — perfectly accurate | Small/medium sets (thousands). Instant at this scale. |
+| **IVF / HNSW** (approximate) | Clusters or graphs vectors to skip most comparisons | Millions+ of vectors, where exact search is too slow |
+
+In our setup (~7,800 vectors) a **flat, exact** index is plenty — brute force is effectively
+instant, with no accuracy trade-off.
+
+## How we use it
+
+FAISS is the **retrieval** half of our RAG assistant. We embed ~7,800 customer summaries
+once, store them in FAISS on disk, and at query time embed the agent's question with the
+**same** model and ask FAISS for the nearest matches. Those matches (plus structured data)
+are handed to `gpt-4o` to write the answer.
+
+> The golden rule: **embed the query with the same model used to build the index.**
+> Mixing models produces vectors that aren't comparable, and search quality collapses.
+
+## Why FAISS specifically
+
+- **In-process & fast** — runs inside your service, no separate database to operate.
+- **Persistent** — the index saves to disk and reloads instantly.
+- **Proven at scale** — the same library scales from thousands to billions of vectors.
+
+We migrated from ChromaDB to FAISS for exactly this: a lean, embedded, persistent index
+with no extra moving parts.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/rag">Retrieval-Augmented Generation</a> · <a href="/learn/vibo-rag">How VIBO RAG works</a>
+</p>

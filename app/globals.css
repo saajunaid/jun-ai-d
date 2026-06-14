@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0f11;
+  --grid: rgba(92, 198, 214, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: #d7e0e0;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  background-position: center;
+}
+
+::selection {
+  background: rgba(79, 209, 197, 0.28);
+  color: #fff;
+}
+
+/* thin teal scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0f11; }
+::-webkit-scrollbar-thumb { background: #1b2a2b; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #0E5A6B; }
+
+@layer components {
+  .kicker {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-teal-300;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.025] backdrop-blur-sm transition
+           duration-300 hover:border-teal-400/40 hover:bg-white/[0.04];
+  }
+  .pill {
+    @apply inline-flex items-center rounded-full border border-teal-400/30 bg-teal-400/5
+           px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-teal-200;
+  }
+  .link-underline {
+    @apply relative text-teal-200 transition hover:text-mint;
+  }
+}
+
+/* ---- MDX reading / prose tuning ---- */
+.prose-notes {
+  @apply prose prose-invert max-w-none;
+}
+.prose-notes :where(h1) {
+  @apply font-display text-3xl md:text-4xl text-white mb-2;
+}
+.prose-notes :where(h2) {
+  @apply font-display text-xl md:text-2xl text-white mt-12 mb-3
+         border-b border-white/10 pb-2;
+}
+.prose-notes :where(h3) {
+  @apply text-lg text-teal-200 mt-8 mb-2;
+}
+.prose-notes :where(p, li) {
+  @apply text-[15px] leading-7 text-[#c4d0d0];
+}
+.prose-notes :where(a) {
+  @apply text-mint no-underline border-b border-mint/40 hover:border-mint;
+}
+.prose-notes :where(strong) {
+  @apply text-white;
+}
+.prose-notes :where(blockquote) {
+  @apply border-l-2 border-teal-400/60 bg-teal-400/[0.04] not-italic
+         rounded-r-lg py-1 text-[#b7c5c5];
+}
+.prose-notes :where(code):not(pre code) {
+  @apply rounded bg-teal-400/10 px-1.5 py-0.5 font-mono text-[13px]
+         text-teal-200 before:content-[''] after:content-[''];
+}
+.prose-notes :where(pre) {
+  @apply rounded-xl border border-white/10 bg-[#0c1214] text-[13px] leading-6
+         overflow-x-auto;
+}
+.prose-notes :where(table) {
+  @apply text-sm;
+}
+.prose-notes :where(thead th) {
+  @apply text-teal-200 border-white/10;
+}
+.prose-notes :where(td, th) {
+  @apply border-white/10;
+}

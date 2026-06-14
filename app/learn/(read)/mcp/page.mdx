@@ -1,0 +1,55 @@
+export const metadata = {
+  title: "Model Context Protocol (MCP) | Junaid Shaik",
+  description:
+    "How AI agents safely call real tools and data, and why MCP is the integration layer behind agentic systems.",
+};
+
+<p className="kicker">Note · Agents · MCP · Tools</p>
+
+# Model Context Protocol (MCP)
+
+An LLM on its own can only produce text. To be useful in the real world it needs to **do
+things** — look up a customer, query a database, file a ticket. **MCP** is the open standard
+that lets an AI model call those tools and data sources in a safe, structured way.
+
+Think of it as **a USB-C port for AI**: instead of hand-wiring every model to every system,
+each capability is exposed once as an MCP "tool," and any MCP-aware agent can use it.
+
+## The pieces
+
+```text
+┌─────────────┐        MCP         ┌──────────────────────────┐
+│  AI agent   │  ◄──────────────►  │  MCP server (your tools) │
+│  (the LLM)  │   list / call      │  get_customer(id)        │
+└─────────────┘     tools          │  search_cases(query)     │
+                                    │  get_revenue(id)         │
+                                    └──────────────────────────┘
+```
+
+- **Tools** are typed functions with a name, a description, and input/output schemas.
+- The **agent** reads the available tools, decides which to call, and supplies arguments.
+- The **MCP server** executes the tool against real systems and returns structured data.
+
+## Why this matters
+
+- **Deterministic data access** — tools return real, validated data, so the model reasons
+  over facts instead of hallucinating them. (It pairs naturally with [RAG](/learn/rag).)
+- **Security & scope** — each tool can be permissioned (e.g. `read-only`, scoped to a
+  domain), and every call can be audited.
+- **Reusability** — expose a capability once; every agent and IDE can use it.
+- **Composability** — complex workflows become "the agent calls tool A, then B, then C."
+
+## How I use MCP
+
+The agentic developer tools I've published — **junai**, **ptarmigan**, and **claudster** —
+all use MCP to drive structured pipelines: specialist agents call tools to plan, implement,
+test, and ship, with explicit gates between stages. In enterprise architecture, I designed
+an **MCP tool surface** so AI agents can pull a unified customer view, interactions, and
+recommendations through one governed, audited interface.
+
+> MCP is what turns a chatbot into an **agent**: a system that can safely act on your data,
+> not just talk about it.
+
+<p className="text-sm text-muted">
+Related: <a href="/learn/llm-serving">Serving LLMs</a> · <a href="/learn/rag">Retrieval-Augmented Generation</a>
+</p>
