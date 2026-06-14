@@ -8,14 +8,15 @@ import {
   concepts,
 } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
+import { Aurora } from "@/components/Aurora";
 
 export default function Home() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-teal-400/10 blur-[120px]" />
-        <div className="container-x relative py-24 md:py-32">
+      <section className="relative isolate overflow-hidden">
+        <Aurora />
+        <div className="container-x relative z-10 py-24 md:py-32">
           <div className="mb-8 animate-fade-up">
             <div className="font-display text-4xl font-bold lowercase tracking-tight text-fg md:text-5xl">
               jun<span className="text-mint">ai</span>d
