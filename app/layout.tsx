@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "@/components/Providers";
+import { Aurora } from "@/components/Aurora";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
@@ -66,7 +67,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         <Providers>
           <Nav />
-          <main>{children}</main>
+          <main className="relative isolate">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[860px] overflow-hidden"
+            >
+              <Aurora />
+            </div>
+            {children}
+          </main>
           <Footer />
         </Providers>
         <Analytics />
