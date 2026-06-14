@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { profile } from "@/lib/content";
 
@@ -13,6 +14,11 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    href.startsWith("/learn") ? pathname.startsWith("/learn")
+    : href === "/about" ? pathname === "/about"
+    : false;
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-900/70 backdrop-blur-md">
       <nav className="container-x flex h-16 items-center justify-between">
@@ -26,7 +32,13 @@ export function Nav() {
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="text-sm text-muted transition hover:text-white">
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`text-sm transition hover:text-white ${
+                isActive(l.href) ? "text-mint" : "text-muted"
+              }`}
+            >
               {l.label}
             </Link>
           ))}

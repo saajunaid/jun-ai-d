@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Junaid Shaik — AI Solutions Lead & Architect",
   description:
     "Solutions & AI Architect building production GenAI systems — LLM integration, RAG, and agentic tooling — on 15+ years of telecom and cloud architecture.",
-  metadataBase: new URL("https://junaidshaik.vercel.app"),
+  metadataBase: new URL("https://jun-ai-d.vercel.app"),
   openGraph: {
     title: "Junaid Shaik — AI Solutions Lead & Architect",
     description:
