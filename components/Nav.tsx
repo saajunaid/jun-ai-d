@@ -16,10 +16,12 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-900/70 backdrop-blur-md">
       <nav className="container-x flex h-16 items-center justify-between">
-        <Link href="/" className="group flex items-center gap-2 font-display text-lg font-bold text-white">
-          <span className="text-mint">{"</"}</span>
-          Junaid&nbsp;Shaik
-          <span className="text-mint">{">"}</span>
+        <Link
+          href="/"
+          aria-label="jun-ai-d — Junaid Shaik home"
+          className="group font-display text-2xl font-bold lowercase tracking-tight text-white"
+        >
+          jun<span className="text-mint">ai</span>d
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

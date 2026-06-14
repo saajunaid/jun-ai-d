@@ -15,6 +15,9 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-teal-400/10 blur-[120px]" />
         <div className="container-x relative py-24 md:py-32">
+          <p className="mb-4 font-display text-xl font-semibold text-white animate-fade-up">
+            Junaid Shaik
+          </p>
           <p className="kicker animate-fade-up">AI Solutions Lead · Solutions &amp; Enterprise Architect</p>
           <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-[1.05] text-white animate-fade-up md:text-6xl">
             Production <span className="text-mint">Generative AI</span>, built on
