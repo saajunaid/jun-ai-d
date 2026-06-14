@@ -6,7 +6,7 @@ const base = "https://jun-ai-d.vercel.app";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
-    "/about",
+    "/resume",
     "/learn",
     ...concepts.map((c) => `/learn/${c.slug}`),
     "/work/ucip",

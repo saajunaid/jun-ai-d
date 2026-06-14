@@ -39,8 +39,8 @@ export function Footer() {
             <Link href="/learn" className="hover:text-fg">
               Learn
             </Link>
-            <Link href="/about" className="hover:text-fg">
-              About
+            <Link href="/resume" className="hover:text-fg">
+              Résumé
             </Link>
             <span className="font-mono text-muted/60">Built with Next.js · Vercel</span>
           </div>

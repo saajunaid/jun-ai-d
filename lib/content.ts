@@ -133,6 +133,12 @@ export const tools: Tool[] = [
 
 export const experience = [
   {
+    role: "AI Engineer & Creator (Independent)",
+    org: "junai-labs",
+    period: "2025 — Present",
+    note: "Design, build and publish agentic AI developer tools — junai, ptarmigan and claudster — to the VS Code and Claude Code marketplaces. MCP multi-agent pipelines, TDD quality gates, and a LiteLLM gateway running the same agents on cloud or on-prem open-source LLMs.",
+  },
+  {
     role: "Lead Solutions Architect — Architecture & Transformation",
     org: "Virgin Media Ireland",
     period: "2019 — Present",

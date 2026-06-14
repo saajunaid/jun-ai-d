@@ -10,7 +10,7 @@ const links = [
   { href: "/#work", label: "Work" },
   { href: "/#expertise", label: "Expertise" },
   { href: "/learn", label: "Learn" },
-  { href: "/about", label: "About" },
+  { href: "/resume", label: "Résumé" },
 ];
 
 export function Nav() {
@@ -18,7 +18,7 @@ export function Nav() {
   const pathname = usePathname();
   const isActive = (href: string) =>
     href.startsWith("/learn") ? pathname.startsWith("/learn")
-    : href === "/about" ? pathname === "/about"
+    : href === "/resume" ? pathname === "/resume"
     : false;
   return (
     <header className="sticky top-0 z-50 border-b border-line/10 bg-bg/70 backdrop-blur-md">

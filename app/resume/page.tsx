@@ -2,18 +2,28 @@ import type { Metadata } from "next";
 import { profile, experience, certs } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About — Junaid Shaik",
+  title: "Résumé — Junaid Shaik",
   description:
-    "15+ years across telecom and technology, now focused on enterprise Generative AI. TOGAF-certified, AWS AI Practitioner.",
+    "Résumé of Junaid Shaik — AI Solutions Lead & Architect. 15+ years across telecom and technology, now focused on enterprise Generative AI. TOGAF-certified, AWS AI Practitioner.",
 };
 
-export default function About() {
+export default function Resume() {
   return (
     <section className="container-x py-20">
-      <p className="kicker mb-3">About</p>
-      <h1 className="max-w-3xl font-display text-4xl font-bold text-fg md:text-5xl">
-        Enterprise architect turned AI builder.
-      </h1>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="kicker mb-3">Résumé · CV</p>
+          <h1 className="max-w-3xl font-display text-4xl font-bold text-fg md:text-5xl">
+            Enterprise architect turned AI builder.
+          </h1>
+        </div>
+        <a
+          href={profile.cv}
+          className="inline-flex w-fit items-center gap-2 rounded-full bg-mint px-5 py-2.5 text-sm font-semibold text-onaccent transition hover:brightness-110"
+        >
+          ↓ Download CV
+        </a>
+      </div>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
         <div className="space-y-5 text-[15px] leading-7 text-body">
@@ -39,15 +49,6 @@ export default function About() {
             </a>{" "}
             section is where I explain how these pieces actually fit together.
           </p>
-
-          <div className="pt-4">
-            <a
-              href={profile.cv}
-              className="inline-flex items-center gap-2 rounded-full bg-mint px-6 py-3 text-sm font-semibold text-onaccent transition hover:brightness-110"
-            >
-              ↓ Download CV
-            </a>
-          </div>
         </div>
 
         <aside className="space-y-8">
