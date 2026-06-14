@@ -93,20 +93,9 @@ body {
   transform: none;
 }
 
-/* lynx blink */
-.lynx-blink {
-  opacity: 0;
-  animation: blink 5.5s steps(1, end) infinite;
-}
-@keyframes blink {
-  0%, 94%, 100% { opacity: 0; }
-  95%, 98% { opacity: 1; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .animate-fade-up,
-  .lynx-blink { animation: none !important; }
+  .animate-fade-up { animation: none !important; }
   .reveal {
     opacity: 1 !important;
     transform: none !important;

@@ -8,7 +8,6 @@ import {
   concepts,
 } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
-import { Lynx } from "@/components/Lynx";
 
 export default function Home() {
   return (
@@ -17,14 +16,11 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-teal-400/10 blur-[120px]" />
         <div className="container-x relative py-24 md:py-32">
-          <div className="mb-8 flex items-center gap-4 animate-fade-up md:gap-6">
-            <Lynx />
-            <div>
-              <div className="font-display text-4xl font-bold lowercase tracking-tight text-fg md:text-5xl">
-                jun<span className="text-mint">ai</span>d
-              </div>
-              <p className="kicker mt-2">Junaid Shaik · AI Solutions Lead</p>
+          <div className="mb-8 animate-fade-up">
+            <div className="font-display text-4xl font-bold lowercase tracking-tight text-fg md:text-5xl">
+              jun<span className="text-mint">ai</span>d
             </div>
+            <p className="kicker mt-2">Junaid Shaik · AI Solutions Lead</p>
           </div>
           <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-[1.05] text-fg animate-fade-up md:text-6xl">
             Production <span className="text-mint">Generative AI</span>, built on
