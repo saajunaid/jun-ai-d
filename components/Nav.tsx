@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { profile } from "@/lib/content";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { href: "/#work", label: "Work" },
@@ -20,12 +21,12 @@ export function Nav() {
     : href === "/about" ? pathname === "/about"
     : false;
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-900/70 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line/10 bg-bg/70 backdrop-blur-md">
       <nav className="container-x flex h-16 items-center justify-between">
         <Link
           href="/"
           aria-label="jun-ai-d — Junaid Shaik home"
-          className="group font-display text-2xl font-bold lowercase tracking-tight text-white"
+          className="group font-display text-2xl font-bold lowercase tracking-tight text-fg"
         >
           jun<span className="text-mint">ai</span>d
         </Link>
@@ -35,7 +36,7 @@ export function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm transition hover:text-white ${
+              className={`text-sm transition hover:text-fg ${
                 isActive(l.href) ? "text-mint" : "text-muted"
               }`}
             >
@@ -47,10 +48,11 @@ export function Nav() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="text-muted transition hover:text-white"
+            className="text-muted transition hover:text-fg"
           >
             <LinkedInIcon />
           </a>
+          <ThemeToggle />
           <Link
             href="/#contact"
             className="rounded-full border border-teal-400/40 bg-teal-400/10 px-4 py-1.5 text-sm font-medium text-teal-200 transition hover:bg-teal-400/20"
@@ -59,28 +61,31 @@ export function Nav() {
           </Link>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="text-muted md:hidden"
-          aria-label="Toggle menu"
-        >
-          <div className="space-y-1.5">
-            <span className="block h-0.5 w-6 bg-current" />
-            <span className="block h-0.5 w-6 bg-current" />
-            <span className="block h-0.5 w-6 bg-current" />
-          </div>
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="text-muted"
+            aria-label="Toggle menu"
+          >
+            <div className="space-y-1.5">
+              <span className="block h-0.5 w-6 bg-current" />
+              <span className="block h-0.5 w-6 bg-current" />
+              <span className="block h-0.5 w-6 bg-current" />
+            </div>
+          </button>
+        </div>
       </nav>
 
       {open && (
-        <div className="border-t border-white/10 md:hidden">
+        <div className="border-t border-line/10 md:hidden">
           <div className="container-x flex flex-col gap-1 py-3">
             {[...links, { href: profile.linkedin, label: "LinkedIn" }, { href: "/#contact", label: "Contact" }].map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-2 text-sm text-muted transition hover:bg-white/5 hover:text-white"
+                className="rounded-lg px-2 py-2 text-sm text-muted transition hover:bg-surface/5 hover:text-fg"
               >
                 {l.label}
               </Link>

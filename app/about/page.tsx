@@ -11,12 +11,12 @@ export default function About() {
   return (
     <section className="container-x py-20">
       <p className="kicker mb-3">About</p>
-      <h1 className="max-w-3xl font-display text-4xl font-bold text-white md:text-5xl">
+      <h1 className="max-w-3xl font-display text-4xl font-bold text-fg md:text-5xl">
         Enterprise architect turned AI builder.
       </h1>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-        <div className="space-y-5 text-[15px] leading-7 text-[#c4d0d0]">
+        <div className="space-y-5 text-[15px] leading-7 text-body">
           <p>
             I&apos;m a Solutions &amp; AI Architect with 15+ years across telecom and
             technology. I spent the first half of my career deep in networks, BSS/OSS, and
@@ -43,7 +43,7 @@ export default function About() {
           <div className="pt-4">
             <a
               href={profile.cv}
-              className="inline-flex items-center gap-2 rounded-full bg-mint px-6 py-3 text-sm font-semibold text-ink-900 transition hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-mint px-6 py-3 text-sm font-semibold text-onaccent transition hover:brightness-110"
             >
               ↓ Download CV
             </a>
@@ -53,7 +53,7 @@ export default function About() {
         <aside className="space-y-8">
           <div className="card p-6">
             <h2 className="kicker mb-4">Certifications</h2>
-            <ul className="space-y-2 text-sm text-[#c4d0d0]">
+            <ul className="space-y-2 text-sm text-body">
               {certs.map((c) => (
                 <li key={c} className="flex gap-2">
                   <span className="text-mint">▹</span>
@@ -64,9 +64,9 @@ export default function About() {
           </div>
           <div className="card p-6">
             <h2 className="kicker mb-3">Education</h2>
-            <p className="text-sm text-white">MBA, Business Administration</p>
+            <p className="text-sm text-fg">MBA, Business Administration</p>
             <p className="text-xs text-muted">Heriot-Watt University</p>
-            <p className="mt-3 text-sm text-white">B.Tech, Computer Science &amp; IT</p>
+            <p className="mt-3 text-sm text-fg">B.Tech, Computer Science &amp; IT</p>
             <p className="text-xs text-muted">JNTU</p>
           </div>
         </aside>
@@ -75,12 +75,12 @@ export default function About() {
       {/* Experience timeline */}
       <div className="mt-20">
         <p className="kicker mb-6">Experience</p>
-        <ol className="relative border-l border-white/10">
+        <ol className="relative border-l border-line/10">
           {experience.map((e) => (
             <li key={e.role + e.period} className="mb-10 ml-6">
-              <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 border-mint bg-ink-900" />
+              <span className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full border-2 border-mint bg-bg" />
               <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                <h3 className="font-display text-lg font-semibold text-white">{e.role}</h3>
+                <h3 className="font-display text-lg font-semibold text-fg">{e.role}</h3>
                 <span className="font-mono text-xs text-muted">{e.period}</span>
               </div>
               <p className="text-sm font-medium text-teal-200">{e.org}</p>

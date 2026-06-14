@@ -2,13 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Theme tokens (RGB channels for Tailwind alpha support) ===== */
 :root {
-  --bg: #0a0f11;
+  /* dark (default) */
+  --bg: 10 15 17;
+  --surface: 255 255 255;
+  --fg: 255 255 255;
+  --fg-body: 215 224 224;
+  --fg-muted: 155 176 178;
+  --line: 255 255 255;
+  --accent: 14 90 107;
+  --accent-soft: 92 198 214;
+  --accent-strong: 79 209 197;
+  --on-accent: 6 24 27;
   --grid: rgba(92, 198, 214, 0.06);
+  --code-bg: #0c1214;
+  --code-fg: #d7e0e0;
+}
+
+html.light {
+  --bg: 246 248 247;
+  --surface: 14 90 107;
+  --fg: 11 26 29;
+  --fg-body: 41 55 57;
+  --fg-muted: 88 104 106;
+  --line: 12 40 45;
+  --accent: 11 102 120;
+  --accent-soft: 11 102 120;
+  --accent-strong: 13 125 143;
+  --on-accent: 255 255 255;
+  --grid: rgba(14, 90, 107, 0.05);
+  --code-bg: #0c1214;
+  --code-fg: #d7e0e0;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg-body));
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  background-position: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: rgb(var(--accent-strong) / 0.28);
+  color: rgb(var(--fg));
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgb(var(--bg)); }
+::-webkit-scrollbar-thumb { background: rgb(var(--line) / 0.18); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgb(var(--accent)); }
+
+@layer components {
+  .kicker {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-teal-300;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+  .card {
+    @apply rounded-2xl border border-line/10 bg-surface/[0.03] backdrop-blur-sm transition
+           duration-300 hover:border-teal-400/40 hover:bg-surface/[0.06];
+  }
+  .pill {
+    @apply inline-flex items-center rounded-full border border-teal-400/30 bg-teal-400/5
+           px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-teal-200;
+  }
+  .link-underline {
+    @apply relative text-teal-200 transition hover:text-mint;
+  }
 }
 
 /* scroll reveal */
@@ -22,7 +93,7 @@ html {
   transform: none;
 }
 
-/* lynx blink: hold eyes open, flash closed briefly every cycle */
+/* lynx blink */
 .lynx-blink {
   opacity: 0;
   animation: blink 5.5s steps(1, end) infinite;
@@ -33,13 +104,9 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
   .animate-fade-up,
-  .lynx-blink {
-    animation: none !important;
-  }
+  .lynx-blink { animation: none !important; }
   .reveal {
     opacity: 1 !important;
     transform: none !important;
@@ -50,94 +117,52 @@ html {
 /* visible keyboard focus */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #4fd1c5;
+  outline: 2px solid rgb(var(--accent-strong));
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-body {
-  background-color: var(--bg);
-  color: #d7e0e0;
-  -webkit-font-smoothing: antialiased;
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 44px 44px;
-  background-position: center;
-}
-
-::selection {
-  background: rgba(79, 209, 197, 0.28);
-  color: #fff;
-}
-
-/* thin teal scrollbar */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: #0a0f11; }
-::-webkit-scrollbar-thumb { background: #1b2a2b; border-radius: 6px; }
-::-webkit-scrollbar-thumb:hover { background: #0E5A6B; }
-
-@layer components {
-  .kicker {
-    @apply font-mono text-xs uppercase tracking-[0.2em] text-teal-300;
-  }
-  .container-x {
-    @apply mx-auto w-full max-w-content px-6 md:px-10;
-  }
-  .card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.025] backdrop-blur-sm transition
-           duration-300 hover:border-teal-400/40 hover:bg-white/[0.04];
-  }
-  .pill {
-    @apply inline-flex items-center rounded-full border border-teal-400/30 bg-teal-400/5
-           px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-teal-200;
-  }
-  .link-underline {
-    @apply relative text-teal-200 transition hover:text-mint;
-  }
-}
-
-/* ---- MDX reading / prose tuning ---- */
+/* ===== MDX reading / prose tuning ===== */
 .prose-notes {
   @apply prose prose-invert max-w-none;
 }
 .prose-notes :where(h1) {
-  @apply font-display text-3xl md:text-4xl text-white mb-2;
+  @apply font-display text-3xl md:text-4xl text-fg mb-2;
 }
 .prose-notes :where(h2) {
-  @apply font-display text-xl md:text-2xl text-white mt-12 mb-3
-         border-b border-white/10 pb-2;
+  @apply font-display text-xl md:text-2xl text-fg mt-12 mb-3 border-b border-line/10 pb-2;
 }
 .prose-notes :where(h3) {
   @apply text-lg text-teal-200 mt-8 mb-2;
 }
 .prose-notes :where(p, li) {
-  @apply text-[15px] leading-7 text-[#c4d0d0];
+  @apply text-[15px] leading-7 text-body;
 }
 .prose-notes :where(a) {
   @apply text-mint no-underline border-b border-mint/40 hover:border-mint;
 }
 .prose-notes :where(strong) {
-  @apply text-white;
+  @apply text-fg;
 }
 .prose-notes :where(blockquote) {
-  @apply border-l-2 border-teal-400/60 bg-teal-400/[0.04] not-italic
-         rounded-r-lg py-1 text-[#b7c5c5];
+  @apply border-l-2 border-teal-400/60 bg-teal-400/[0.06] not-italic rounded-r-lg py-1 text-body;
 }
 .prose-notes :where(code):not(pre code) {
-  @apply rounded bg-teal-400/10 px-1.5 py-0.5 font-mono text-[13px]
-         text-teal-200 before:content-[''] after:content-[''];
+  @apply rounded bg-teal-400/10 px-1.5 py-0.5 font-mono text-[13px] text-teal-200
+         before:content-[''] after:content-[''];
 }
 .prose-notes :where(pre) {
-  @apply rounded-xl border border-white/10 bg-[#0c1214] text-[13px] leading-6
-         overflow-x-auto;
+  border: 1px solid rgb(var(--line) / 0.12);
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border-radius: 0.75rem;
+  font-size: 13px;
+  line-height: 1.5rem;
+  overflow-x: auto;
 }
-.prose-notes :where(table) {
-  @apply text-sm;
+.prose-notes :where(pre code) {
+  color: var(--code-fg);
 }
-.prose-notes :where(thead th) {
-  @apply text-teal-200 border-white/10;
-}
-.prose-notes :where(td, th) {
-  @apply border-white/10;
-}
+.prose-notes :where(table) { @apply text-sm; }
+.prose-notes :where(thead th) { @apply text-teal-200 border-line/10; }
+.prose-notes :where(td, th) { @apply border-line/10; }

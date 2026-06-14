@@ -3,12 +3,12 @@ import { profile } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer id="contact" className="border-t border-white/10 bg-ink-900/60">
+    <footer id="contact" className="border-t border-line/10 bg-bg/60">
       <div className="container-x py-14">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="kicker mb-3">Get in touch</p>
-            <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+            <h2 className="font-display text-2xl font-bold text-fg md:text-3xl">
               Let&apos;s build something intelligent.
             </h2>
             <p className="mt-2 max-w-md text-sm text-muted">
@@ -31,15 +31,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-muted md:flex-row md:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-line/10 pt-6 text-xs text-muted md:flex-row md:items-center">
           <p>
             © {new Date().getFullYear()} {profile.name} · {profile.location}
           </p>
           <div className="flex gap-5">
-            <Link href="/learn" className="hover:text-white">
+            <Link href="/learn" className="hover:text-fg">
               Learn
             </Link>
-            <Link href="/about" className="hover:text-white">
+            <Link href="/about" className="hover:text-fg">
               About
             </Link>
             <span className="font-mono text-muted/60">Built with Next.js · Vercel</span>

@@ -1,7 +1,10 @@
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
+const ch = (v: string) => `rgb(var(${v}) / <alpha-value>)`;
+
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{ts,tsx,md,mdx}",
     "./components/**/*.{ts,tsx}",
@@ -10,21 +13,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          900: "#0a0f11",
-          800: "#0e1518",
-          700: "#13201f",
-          600: "#1b2a2b",
-        },
+        // semantic, theme-aware tokens (channels swapped in globals.css)
+        bg: ch("--bg"),
+        surface: ch("--surface"),
+        fg: ch("--fg"),
+        body: ch("--fg-body"),
+        muted: ch("--fg-muted"),
+        line: ch("--line"),
+        onaccent: ch("--on-accent"),
+        mint: ch("--accent-strong"),
         teal: {
-          DEFAULT: "#0E5A6B",
-          400: "#2f9bb0",
-          300: "#5cc6d6",
-          200: "#9fe3ec",
+          DEFAULT: ch("--accent"),
+          200: ch("--accent-soft"),
+          300: ch("--accent-soft"),
+          400: ch("--accent"),
         },
-        mint: "#4fd1c5",
-        paper: "#eef2f1",
-        muted: "#9bb0b2",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
