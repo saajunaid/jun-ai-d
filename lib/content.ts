@@ -133,16 +133,16 @@ export const tools: Tool[] = [
 
 export const experience = [
   {
-    role: "AI Engineer & Creator (Independent)",
-    org: "junai-labs",
+    role: "Founding Member — AI Solutions Vertical",
+    org: "Virgin Media Ireland",
     period: "2025 — Present",
-    note: "Design, build and publish agentic AI developer tools — junai, ptarmigan and claudster — to the VS Code and Claude Code marketplaces. MCP multi-agent pipelines, TDD quality gates, and a LiteLLM gateway running the same agents on cloud or on-prem open-source LLMs.",
+    note: "Founding and core member of VMIE's AI Solutions vertical — shaping enterprise AI strategy, governance and value-creation frameworks, and leading delivery of production GenAI platforms (contact-centre assistants, RAG customer intelligence, AI field dispatch) across the business.",
   },
   {
     role: "Lead Solutions Architect — Architecture & Transformation",
     org: "Virgin Media Ireland",
     period: "2019 — Present",
-    note: "AI Solutions Leadership Team. Leading AI platforms, the €200M fibre transformation (HFC → XGS-PON), and contact-centre modernisation.",
+    note: "Enterprise & solution architecture for the €200M fibre transformation (HFC → XGS-PON), BSS/OSS on GCP, Nokia provisioning, and contact-centre modernisation (Genesys CCaaS).",
   },
   {
     role: "Senior Network Architect",
