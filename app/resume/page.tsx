@@ -37,7 +37,7 @@ export default function Resume() {
           <p>
             Today I design and ship production Generative AI: LLM integration across cloud and
             on-prem models, retrieval-augmented generation grounded in real customer data, and
-            agentic systems built on the Model Context Protocol. I&apos;m a founding member of my
+            agentic systems built on the Model Context Protocol. I&apos;m a core member of my
             organisation&apos;s AI Centre of Excellence, and I&apos;ve published three agentic
             developer tools to the VS Code and Claude Code marketplaces.
           </p>

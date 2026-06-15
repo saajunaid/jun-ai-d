@@ -133,10 +133,10 @@ export const tools: Tool[] = [
 
 export const experience = [
   {
-    role: "Founding Member — AI Centre of Excellence (CoE)",
+    role: "Core Member — AI Centre of Excellence (CoE)",
     org: "Virgin Media Ireland",
     period: "2025 — Present",
-    note: "Founding and core member of VMIE's AI Centre of Excellence — shaping enterprise AI strategy, governance and value-creation frameworks, and leading delivery of production GenAI platforms (contact-centre assistants, RAG customer intelligence, AI field dispatch) across the business.",
+    note: "Core member of VMIE's AI Centre of Excellence since its inception — shaping enterprise AI strategy, governance and value-creation frameworks, and leading delivery of production GenAI platforms (contact-centre assistants, RAG customer intelligence, AI field dispatch) across the business.",
   },
   {
     role: "Lead Solutions Architect — Architecture & Transformation",
