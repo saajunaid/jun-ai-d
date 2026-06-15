@@ -8,6 +8,7 @@ export const profile = {
   github: "https://github.com/saajunaid",
   linkedin: "https://www.linkedin.com/in/junaid-shaik-4a361849/",
   cv: "/Junaid_Shaik_AI_Solutions_Lead_CV.docx",
+  cvDetailed: "/Junaid_Shaik_CV_Detailed.docx",
 };
 
 export const stats = [

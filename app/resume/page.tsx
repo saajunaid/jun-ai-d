@@ -17,12 +17,22 @@ export default function Resume() {
             Enterprise architect turned AI builder.
           </h1>
         </div>
-        <a
-          href={profile.cv}
-          className="inline-flex w-fit items-center gap-2 rounded-full bg-mint px-5 py-2.5 text-sm font-semibold text-onaccent transition hover:brightness-110"
-        >
-          ↓ Download CV
-        </a>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href={profile.cv}
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-mint px-5 py-2.5 text-sm font-semibold text-onaccent transition hover:brightness-110"
+          >
+            ↓ Download CV
+            <span className="font-mono text-[11px] opacity-70">2-page</span>
+          </a>
+          <a
+            href={profile.cvDetailed}
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-teal-400/40 px-5 py-2.5 text-sm font-semibold text-teal-200 transition hover:bg-teal-400/10"
+          >
+            ↓ Detailed CV
+            <span className="font-mono text-[11px] opacity-70">3-page</span>
+          </a>
+        </div>
       </div>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
