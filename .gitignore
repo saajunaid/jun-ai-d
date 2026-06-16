@@ -27,3 +27,6 @@ next-env.d.ts
 
 # local tool artifacts
 .claude/
+
+# editor backups
+*.bak
