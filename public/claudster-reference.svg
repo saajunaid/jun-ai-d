@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080">
+
+<!-- BACKGROUND -->
+<rect width="1600" height="1080" fill="#0b1416"/>
+<rect x="1" y="1" width="1598" height="1078" fill="none" stroke="#0e3a42" stroke-width="2"/>
+
+<!-- TITLE BAR -->
+<rect x="0" y="0" width="1600" height="62" fill="#0e3a42"/>
+<text x="800" y="36" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#e7eeee" letter-spacing="4">CLAUDSTER — COMMANDS, AGENTS &amp; SKILLS REFERENCE</text>
+<text x="800" y="54" text-anchor="middle" font-family="Courier New, monospace" font-size="11" fill="#9fd2dd">plugin: claudster@claudster  ·  marketplace: saajunaid/junai  ·  commands: 7  ·  core: 39 skills  ·  extras: 97 skills  ·  agents: 12  ·  POSTER 2 OF 2</text>
+
+<!-- COL 1: COMMANDS (x:32..530) -->
+<rect x="32" y="68" width="498" height="18" fill="#1f6f7e" rx="1"/>
+<text x="44" y="81" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#e7eeee" letter-spacing="3">── COMMANDS</text>
+
+<!-- /prd -->
+<rect x="32" y="88" width="498" height="38" fill="#1f6f7e" stroke="#1f6f7e" stroke-width="1.5" rx="1"/>
+<text x="48" y="104" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">/prd</text>
+<text x="180" y="104" font-family="Arial,sans-serif" font-size="11" fill="#9fd2dd">Structured discovery dialogue → PRD document</text>
+<text x="48" y="119" font-family="Arial,sans-serif" font-size="10" fill="#bfe0e8">Use first when starting a new feature. Ask questions, surface unknowns, produce written spec.</text>
+
+<!-- /feature-plan -->
+<rect x="32" y="130" width="498" height="38" fill="#0f262c" stroke="#1f6f7e" stroke-width="1.5" rx="1"/>
+<text x="48" y="146" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#cfe2e2">/feature-plan</text>
+<text x="180" y="146" font-family="Arial,sans-serif" font-size="11" fill="#62c6d6">TDD-phased plan for multi-session features</text>
+<text x="48" y="161" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Generates .claudster/plans/*.md. Phases map to /tdd cycles. Tracks progress across sessions.</text>
+
+<!-- /tdd -->
+<rect x="32" y="172" width="498" height="38" fill="#0f2a27" stroke="#1f8a76" stroke-width="2" rx="1"/>
+<text x="48" y="188" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#5fd1bf">/tdd</text>
+<text x="180" y="188" font-family="Arial,sans-serif" font-size="11" fill="#5fd1bf">Red → Green → Refactor per behavior unit</text>
+<text x="48" y="203" font-family="Arial,sans-serif" font-size="10" fill="#86e3cf">Core loop. Agents auto-fire. Repeat per plan phase. Do not skip red. ↺</text>
+
+<!-- /ui-brief -->
+<rect x="32" y="214" width="498" height="38" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" stroke-dasharray="7,4" rx="1"/>
+<text x="48" y="230" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#4fb8ac">/ui-brief</text>
+<text x="180" y="230" font-family="Arial,sans-serif" font-size="11" fill="#4fb8ac">Design-first: lock UI tokens before coding</text>
+<text x="48" y="245" font-family="Arial,sans-serif" font-size="10" fill="#9fd6cf">Optional. Run before any UI /tdd cycle. Proposes font, colour, animation — prevents drift.</text>
+
+<!-- /ship -->
+<rect x="32" y="256" width="498" height="38" fill="#241b0f" stroke="#7a5a30" stroke-width="1.5" rx="1"/>
+<text x="48" y="272" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#d8ad6a">/ship</text>
+<text x="180" y="272" font-family="Arial,sans-serif" font-size="11" fill="#d8ad6a">Commit, push, monitor deploy pipeline</text>
+<text x="48" y="287" font-family="Arial,sans-serif" font-size="10" fill="#c9a877">Auto-detects Gitea / GitHub Actions / local. CI-aware. Run after /tdd phase is green.</text>
+
+<!-- /handoff -->
+<rect x="32" y="298" width="498" height="38" fill="#0e3a42" stroke="#0e3a42" stroke-width="1.5" rx="1"/>
+<text x="48" y="314" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">/handoff</text>
+<text x="180" y="314" font-family="Arial,sans-serif" font-size="11" fill="#9fd2dd">Capture session state into relay.md</text>
+<text x="48" y="329" font-family="Arial,sans-serif" font-size="10" fill="#9fd2dd">Manual. Run before every session close. Hook reads relay.md automatically at SessionStart.</text>
+
+<!-- /relay -->
+<rect x="32" y="340" width="498" height="38" fill="#103030" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<text x="48" y="356" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#4fb8ac">/relay</text>
+<text x="180" y="356" font-family="Arial,sans-serif" font-size="11" fill="#4fb8ac">Write or refresh relay.md at repo root</text>
+<text x="48" y="371" font-family="Arial,sans-serif" font-size="10" fill="#9fd6cf">Creates/updates relay.md with full context. Use mid-session when state has diverged.</text>
+
+<!-- /setup-project-ai -->
+<rect x="32" y="382" width="498" height="38" fill="#0f262c" stroke="#1f6f7e" stroke-width="1.5" rx="1"/>
+<text x="48" y="398" font-family="Courier New,monospace" font-size="11" font-weight="700" fill="#cfe2e2">/setup-project-ai</text>
+<text x="210" y="398" font-family="Arial,sans-serif" font-size="11" fill="#62c6d6">Wire hooks + CLAUDE.md for new repo</text>
+<text x="48" y="413" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">One-time per project. Generates the CLAUDE.md hierarchy, settings + status line, pre-push gate.</text>
+
+<!-- /code-review -->
+<rect x="32" y="424" width="498" height="38" fill="#211e0f" stroke="#6e5526" stroke-width="1.5" rx="1"/>
+<text x="48" y="440" font-family="Courier New,monospace" font-size="11" font-weight="700" fill="#d8ad6a">/code-review ultra</text>
+<text x="220" y="440" font-family="Arial,sans-serif" font-size="11" fill="#d8ad6a">Multi-agent cloud review of branch</text>
+<text x="48" y="455" font-family="Arial,sans-serif" font-size="10" fill="#caa971">User-triggered, billed. /code-review ultra &lt;PR#&gt; for GitHub PR. Needs git repo.</text>
+
+<!-- Plugin Management -->
+<line x1="32" y1="470" x2="530" y2="470" stroke="#233037" stroke-width="1"/>
+<rect x="32" y="476" width="498" height="16" fill="#2a3640" rx="1"/>
+<text x="44" y="488" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#e7eeee" letter-spacing="2">── PLUGIN MANAGEMENT</text>
+
+<rect x="32" y="494" width="498" height="20" fill="#0f262c" stroke="#214a52" stroke-width="1"/>
+<text x="48" y="508" font-family="Courier New,monospace" font-size="11" fill="#62c6d6">claude plugin install claudster@claudster</text>
+
+<rect x="32" y="516" width="498" height="20" fill="#0e211e" stroke="#1d5a4c" stroke-width="1"/>
+<text x="48" y="530" font-family="Courier New,monospace" font-size="11" fill="#5fd1bf">claude plugin enable claudster-extras</text>
+
+<rect x="32" y="538" width="498" height="20" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="48" y="552" font-family="Courier New,monospace" font-size="11" fill="#d8ad6a">claude plugin disable claudster-extras</text>
+
+<rect x="32" y="560" width="498" height="20" fill="#0e191c" stroke="#1e2a30" stroke-width="1"/>
+<text x="48" y="574" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">claude plugin update claudster</text>
+
+<rect x="32" y="582" width="498" height="20" fill="#0e191c" stroke="#1e2a30" stroke-width="1"/>
+<text x="48" y="596" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">claude plugin list  /  claude plugin details claudster</text>
+
+<!-- COL 2: AGENTS (x:548..1048) -->
+<line x1="544" y1="62" x2="544" y2="1018" stroke="#1e2a30" stroke-width="1"/>
+<rect x="548" y="68" width="500" height="18" fill="#1d7d76" rx="1"/>
+<text x="560" y="81" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#e7eeee" letter-spacing="3">── SPECIALIST AGENTS (12)</text>
+<text x="948" y="81" font-family="Arial,sans-serif" font-size="9" fill="#8fa3a3">read-only · findings only</text>
+
+<!-- anchor -->
+<rect x="548" y="90" width="500" height="72" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="90" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="106" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">anchor</text>
+<text x="700" y="106" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Hotfix / security / migration verifier</text>
+<text x="564" y="124" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Captures baseline, verifies change against it, returns Evidence Bundle.</text>
+<text x="564" y="140" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Use: hotfixes, DB migrations, security-sensitive changes. Evidence-first.</text>
+<text x="564" y="155" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">When: before applying anything where correctness &gt; speed.</text>
+
+<!-- claude-md-curator -->
+<rect x="548" y="166" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="166" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="182" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#e7eeee">claude-md-curator</text>
+<text x="700" y="182" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Prune bloated CLAUDE.md files</text>
+<text x="564" y="200" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Flags staleness, duplication, misrouted how-to content. Shows diff first.</text>
+<text x="564" y="215" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: every few weeks or when any CLAUDE.md exceeds ~80 lines.</text>
+
+<!-- code-reviewer -->
+<rect x="548" y="230" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="230" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="246" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#e7eeee">code-reviewer</text>
+<text x="700" y="246" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Correctness, security, conventions</text>
+<text x="564" y="264" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Reviews diff for correctness, security vulnerabilities, style adherence.</text>
+<text x="564" y="279" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: after phase is green and before commit/merge. Returns prioritised issues.</text>
+
+<!-- codebase-audit -->
+<rect x="548" y="294" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="294" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="310" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#e7eeee">codebase-audit</text>
+<text x="700" y="310" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Systematic audit of unfamiliar codebase</text>
+<text x="564" y="328" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Reads broadly, returns audit-findings report + open questions.</text>
+<text x="564" y="343" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: before architecture, major feature, or refactor in unfamiliar project.</text>
+
+<!-- data-engineer -->
+<rect x="548" y="358" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="358" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="374" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#e7eeee">data-engineer</text>
+<text x="700" y="374" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">ETL / pipeline / data-contract design</text>
+<text x="564" y="392" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Source-to-target mapping, transforms, ingestion, validation design.</text>
+<text x="564" y="407" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: adding pipeline, integrating source, auditing data layer.</text>
+
+<!-- debug -->
+<rect x="548" y="422" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="422" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="438" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">debug</text>
+<text x="700" y="438" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Root-cause diagnosis + fix plan</text>
+<text x="564" y="456" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Reproduces and isolates bug, returns root cause + fix + regression test.</text>
+<text x="564" y="471" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: when a test fails or behavior is wrong and cause is unknown.</text>
+
+<!-- knowledge-transfer -->
+<rect x="548" y="486" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="486" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="502" font-family="Courier New,monospace" font-size="11" font-weight="700" fill="#e7eeee">knowledge-transfer</text>
+<text x="700" y="502" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Capture session learnings durably</text>
+<text x="564" y="520" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Extracts non-obvious learnings, writes to instructions / runbooks / CLAUDE.md.</text>
+<text x="564" y="535" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: after implementation, before context is lost. Writes docs only.</text>
+
+<!-- preflight -->
+<rect x="548" y="550" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="550" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="566" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">preflight</text>
+<text x="700" y="566" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Validate plan vs actual codebase</text>
+<text x="564" y="584" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Checks file paths, symbol names, API shapes, dependencies. PASS/FAIL report.</text>
+<text x="564" y="599" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: after plan is drafted, before any code is written. Read-only.</text>
+
+<!-- security-analyst -->
+<rect x="548" y="614" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="614" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="630" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#e7eeee">security-analyst</text>
+<text x="700" y="630" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">OWASP vulnerability assessment</text>
+<text x="564" y="648" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Severity-ranked findings. Auth/crypto/PII code, pre-merge security review.</text>
+<text x="564" y="663" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Returns findings only — main thread applies fixes.</text>
+
+<!-- sql-expert -->
+<rect x="548" y="678" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="678" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="694" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">sql-expert</text>
+<text x="700" y="694" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Schema, query design, optimization</text>
+<text x="564" y="712" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Reviews schema, queries, stored procs, indexing. Returns suggested SQL.</text>
+<text x="564" y="727" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: slow queries, new schema, or before shipping hand-written SQL.</text>
+
+<!-- tester -->
+<rect x="548" y="742" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="742" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="758" font-family="Courier New,monospace" font-size="13" font-weight="700" fill="#e7eeee">tester</text>
+<text x="700" y="758" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Write + run tests, compact pass/fail report</text>
+<text x="564" y="776" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Writes tests, runs suite, returns counts + failures. Enforces TDD discipline.</text>
+<text x="564" y="791" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: after implementing a phase or to add coverage. Can Edit/Write test files.</text>
+
+<!-- ui-design-reviewer -->
+<rect x="548" y="806" width="500" height="60" fill="#0e211e" stroke="#1d7d76" stroke-width="1.5" rx="1"/>
+<rect x="548" y="806" width="500" height="22" fill="#1d7d76" rx="1"/>
+<text x="564" y="822" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#e7eeee">ui-design-reviewer</text>
+<text x="720" y="822" font-family="Arial,sans-serif" font-size="11" fill="#bfeede">Screenshot + critique aesthetics + a11y</text>
+<text x="564" y="840" font-family="Arial,sans-serif" font-size="11" fill="#cfe2e2">Screenshots at desktop + mobile. Returns structured UX/accessibility findings.</text>
+<text x="564" y="855" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Use: after frontend phase, before shipping. Provide URL + optional design doc.</text>
+
+<!-- COL 3: SKILLS (x:1056..1568) -->
+<line x1="1052" y1="62" x2="1052" y2="1018" stroke="#1e2a30" stroke-width="1"/>
+<rect x="1056" y="68" width="512" height="18" fill="#7a5a30" rx="1"/>
+<text x="1068" y="81" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#e7eeee" letter-spacing="3">── COMMANDS &amp; SESSION TOOLS  ·  always on</text>
+
+<!-- Session Management -->
+<rect x="1056" y="88" width="512" height="16" fill="#3a2f1c" rx="1"/>
+<text x="1068" y="100" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e0c596" letter-spacing="2">SESSION MANAGEMENT</text>
+
+<rect x="1056" y="106" width="512" height="28" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="117" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">handoff</text>
+<text x="1072" y="128" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Write session state to relay.md — run before every close</text>
+
+<rect x="1056" y="136" width="512" height="28" fill="#221d11" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="147" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">relay</text>
+<text x="1072" y="158" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Create or refresh relay.md mid-session or on demand</text>
+
+<!-- Planning -->
+<rect x="1056" y="168" width="512" height="16" fill="#3a2f1c" rx="1"/>
+<text x="1068" y="180" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e0c596" letter-spacing="2">PLANNING &amp; REQUIREMENTS</text>
+
+<rect x="1056" y="186" width="512" height="28" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="197" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">prd</text>
+<text x="1072" y="208" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Discover requirements via dialogue, produce written PRD</text>
+
+<rect x="1056" y="216" width="512" height="28" fill="#221d11" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="227" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">feature-plan</text>
+<text x="1072" y="238" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Phased TDD plan saved to .claudster/plans/</text>
+
+<!-- Development -->
+<rect x="1056" y="248" width="512" height="16" fill="#3a2f1c" rx="1"/>
+<text x="1068" y="260" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e0c596" letter-spacing="2">DEVELOPMENT</text>
+
+<rect x="1056" y="266" width="512" height="28" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="277" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">tdd</text>
+<text x="1072" y="288" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Red-Green-Refactor cycle with strict TDD discipline</text>
+
+<rect x="1056" y="296" width="512" height="28" fill="#221d11" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="307" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">ui-brief</text>
+<text x="1072" y="318" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Lock UI design tokens before any frontend code (optional)</text>
+
+<rect x="1056" y="326" width="512" height="28" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="337" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">ship</text>
+<text x="1072" y="348" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Commit, push, CI-aware deploy monitoring</text>
+
+<!-- Project Setup -->
+<rect x="1056" y="358" width="512" height="16" fill="#3a2f1c" rx="1"/>
+<text x="1068" y="370" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e0c596" letter-spacing="2">PROJECT SETUP &amp; REVIEW</text>
+
+<rect x="1056" y="376" width="512" height="28" fill="#221d11" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="387" font-family="Courier New,monospace" font-size="11" font-weight="700" fill="#d8ad6a">setup-project-ai</text>
+<text x="1072" y="398" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Wire CLAUDE.md + hooks + status line + pre-push gate (once per repo)</text>
+
+<rect x="1056" y="406" width="512" height="28" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="417" font-family="Courier New,monospace" font-size="11" font-weight="700" fill="#d8ad6a">code-review</text>
+<text x="1072" y="428" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">/code-review ultra [PR#] — multi-agent review (user-triggered)</text>
+
+<!-- Diagnostics + Memory -->
+<rect x="1056" y="438" width="512" height="16" fill="#3a2f1c" rx="1"/>
+<text x="1068" y="450" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e0c596" letter-spacing="2">DIAGNOSTICS &amp; MEMORY</text>
+
+<rect x="1056" y="456" width="512" height="28" fill="#221d11" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="467" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">usage-log</text>
+<text x="1072" y="478" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">.claude/usage-log.jsonl — per-session token spend from the Stop hook</text>
+
+<rect x="1056" y="486" width="512" height="28" fill="#241b0f" stroke="#5a4426" stroke-width="1"/>
+<text x="1072" y="497" font-family="Courier New,monospace" font-size="12" font-weight="700" fill="#d8ad6a">remember</text>
+<text x="1072" y="508" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Persist a fact or decision across sessions via auto-memory system</text>
+
+<!-- EXTRAS SECTION (full width) -->
+<line x1="0" y1="616" x2="1600" y2="616" stroke="#0e3a42" stroke-width="2"/>
+<rect x="0" y="616" width="1600" height="32" fill="#0e3a42"/>
+<text x="48" y="638" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#e7eeee" letter-spacing="2">CLAUDSTER-EXTRAS  ·  97 skills  ·  disabled by default  ·  enable on demand to keep core context lean</text>
+<text x="1380" y="638" font-family="Courier New,monospace" font-size="11" fill="#9fd2dd">claudster-extras@claudster</text>
+
+<rect x="32" y="656" width="400" height="22" fill="#0f262c" stroke="#214a52" stroke-width="1" rx="1"/>
+<text x="48" y="671" font-family="Courier New,monospace" font-size="12" fill="#62c6d6">claude plugin enable claudster-extras</text>
+<text x="450" y="671" font-family="Arial,sans-serif" font-size="11" fill="#4fb8ac">→ activate all 97 skills · restart Claude Code after</text>
+
+<rect x="32" y="680" width="400" height="22" fill="#241b0f" stroke="#5a4426" stroke-width="1" rx="1"/>
+<text x="48" y="695" font-family="Courier New,monospace" font-size="12" fill="#d8ad6a">claude plugin disable claudster-extras</text>
+<text x="450" y="695" font-family="Arial,sans-serif" font-size="11" fill="#8fa3a3">→ back to lean footprint · restart Claude Code after</text>
+
+<!-- Extras categories grid (4 cols) -->
+<text x="48" y="726" font-family="Arial,sans-serif" font-size="10" fill="#62c6d6" letter-spacing="2" font-weight="700">DOCUMENT GENERATION</text>
+<line x1="32" y1="729" x2="412" y2="729" stroke="#214a52" stroke-width="1"/>
+<text x="48" y="744" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">xlsx · docx · pptx · pdf · vm-ppt</text>
+<text x="48" y="758" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Excel, Word, PowerPoint, PDF, VMIE slides.</text>
+
+<text x="48" y="782" font-family="Arial,sans-serif" font-size="10" fill="#62c6d6" letter-spacing="2" font-weight="700">FASTAPI / PYTHON</text>
+<line x1="32" y1="785" x2="412" y2="785" stroke="#214a52" stroke-width="1"/>
+<text x="48" y="800" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">fastapi-crud · fastapi-auth · fastapi-test · python-tdd</text>
+<text x="48" y="814" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">CRUD + JWT auth + test suite scaffolding.</text>
+
+<text x="48" y="838" font-family="Arial,sans-serif" font-size="10" fill="#62c6d6" letter-spacing="2" font-weight="700">DATABASE</text>
+<line x1="32" y1="841" x2="412" y2="841" stroke="#214a52" stroke-width="1"/>
+<text x="48" y="856" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">postgres-schema · migrations · alembic · sql-query</text>
+<text x="48" y="870" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Schema design, Alembic migrations, query review.</text>
+
+<text x="48" y="894" font-family="Arial,sans-serif" font-size="10" fill="#62c6d6" letter-spacing="2" font-weight="700">VMIE / ENTERPRISE</text>
+<line x1="32" y1="897" x2="412" y2="897" stroke="#214a52" stroke-width="1"/>
+<text x="48" y="912" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">vmie-deploy · vmie-golden-workflow · vmie-ppt</text>
+<text x="48" y="926" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">VMIE-specific deploy and workflow skills.</text>
+
+<!-- Col 2 extras -->
+<text x="436" y="726" font-family="Arial,sans-serif" font-size="10" fill="#4fb8ac" letter-spacing="2" font-weight="700">REACT / FRONTEND</text>
+<line x1="420" y1="729" x2="800" y2="729" stroke="#1d5a4c" stroke-width="1"/>
+<text x="436" y="744" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">react-component · tanstack-query · react-form</text>
+<text x="436" y="758" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Components, forms, tables, TanStack Query hooks.</text>
+
+<text x="436" y="782" font-family="Arial,sans-serif" font-size="10" fill="#4fb8ac" letter-spacing="2" font-weight="700">TESTING</text>
+<line x1="420" y1="785" x2="800" y2="785" stroke="#1d5a4c" stroke-width="1"/>
+<text x="436" y="800" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">pytest-suite · vitest-suite · playwright-e2e</text>
+<text x="436" y="814" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Unit, integration, E2E, coverage reporting.</text>
+
+<text x="436" y="838" font-family="Arial,sans-serif" font-size="10" fill="#4fb8ac" letter-spacing="2" font-weight="700">INFRA / DEPLOY</text>
+<line x1="420" y1="841" x2="800" y2="841" stroke="#1d5a4c" stroke-width="1"/>
+<text x="436" y="856" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">docker-compose · nginx-config · github-actions</text>
+<text x="436" y="870" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">CI pipelines, containers, web server config.</text>
+
+<text x="436" y="894" font-family="Arial,sans-serif" font-size="10" fill="#4fb8ac" letter-spacing="2" font-weight="700">ANALYTICS / DATA</text>
+<line x1="420" y1="897" x2="800" y2="897" stroke="#1d5a4c" stroke-width="1"/>
+<text x="436" y="912" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">analytics-schema · event-tracking · dashboard</text>
+<text x="436" y="926" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Analytics events, schema, dashboard components.</text>
+
+<!-- Col 3 extras -->
+<text x="824" y="726" font-family="Arial,sans-serif" font-size="10" fill="#d8ad6a" letter-spacing="2" font-weight="700">WINDOWS / NSSM</text>
+<line x1="808" y1="729" x2="1188" y2="729" stroke="#fed7aa" stroke-width="1"/>
+<text x="824" y="744" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">nssm-service · windows-deployment · iis-config</text>
+<text x="824" y="758" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">NSSM service wiring, IIS, PowerShell automation.</text>
+
+<text x="824" y="782" font-family="Arial,sans-serif" font-size="10" fill="#d8ad6a" letter-spacing="2" font-weight="700">API / AUTH</text>
+<line x1="808" y1="785" x2="1188" y2="785" stroke="#fed7aa" stroke-width="1"/>
+<text x="824" y="800" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">api-client · jwt-auth · oauth · rbac</text>
+<text x="824" y="814" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Auth patterns, API clients, access control.</text>
+
+<text x="824" y="838" font-family="Arial,sans-serif" font-size="10" fill="#d8ad6a" letter-spacing="2" font-weight="700">DEBUGGING AIDS</text>
+<line x1="808" y1="841" x2="1188" y2="841" stroke="#fed7aa" stroke-width="1"/>
+<text x="824" y="856" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">error-trace · perf-profile · memory-leak</text>
+<text x="824" y="870" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Trace, profile, leak, and concurrency analysis.</text>
+
+<text x="824" y="894" font-family="Arial,sans-serif" font-size="10" fill="#d8ad6a" letter-spacing="2" font-weight="700">DIAGRAMS / DOCS</text>
+<line x1="808" y1="897" x2="1188" y2="897" stroke="#fed7aa" stroke-width="1"/>
+<text x="824" y="912" font-family="Courier New,monospace" font-size="11" fill="#c3d0d0">drawio-diagram · architecture-doc · runbook · adr</text>
+<text x="824" y="926" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Architecture diagrams, runbooks, ADRs, changelogs.</text>
+
+<!-- Col 4 extras -->
+<text x="1212" y="726" font-family="Arial,sans-serif" font-size="10" fill="#cfe2e2" letter-spacing="2" font-weight="700">HOOKS (3 scripts)</text>
+<line x1="1196" y1="729" x2="1568" y2="729" stroke="#233037" stroke-width="1"/>
+<text x="1212" y="744" font-family="Courier New,monospace" font-size="11" fill="#4fb8ac">inject_relay.py · session_end.py</text>
+<text x="1212" y="758" font-family="Courier New,monospace" font-size="11" fill="#4fb8ac">auto_lint.py · hooks.json</text>
+<text x="1212" y="772" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">+ git pre-push gate (on push)</text>
+<text x="1212" y="787" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Python · cross-platform W/L/M</text>
+
+<text x="1212" y="810" font-family="Arial,sans-serif" font-size="10" fill="#cfe2e2" letter-spacing="2" font-weight="700">CODEX SUPPORT</text>
+<line x1="1196" y1="813" x2="1568" y2="813" stroke="#233037" stroke-width="1"/>
+<text x="1212" y="828" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Same SKILL.md format as Claude Code.</text>
+<text x="1212" y="842" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">Skills → .agents/skills/ at project root.</text>
+<text x="1212" y="856" font-family="Arial,sans-serif" font-size="10" fill="#c3d0d0">AGENTS.md auto-deployed by /setup-project-ai.</text>
+<text x="1212" y="874" font-family="Courier New,monospace" font-size="10" fill="#62c6d6">python export_runtime_resources.py</text>
+<text x="1212" y="888" font-family="Courier New,monospace" font-size="10" fill="#62c6d6">  --profile codex</text>
+<text x="1212" y="903" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Output → dist/runtime-resources/codex/</text>
+
+<text x="1212" y="926" font-family="Arial,sans-serif" font-size="10" fill="#cfe2e2" letter-spacing="2" font-weight="700">VERSION</text>
+<line x1="1196" y1="929" x2="1568" y2="929" stroke="#233037" stroke-width="1"/>
+<text x="1212" y="944" font-family="Courier New,monospace" font-size="12" fill="#cfe2e2">v1.0.0</text>
+<text x="1212" y="959" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Source: runtime-targets.json → plugin.json</text>
+
+<!-- FOOTER -->
+<line x1="0" y1="930" x2="1600" y2="930" stroke="#233037" stroke-width="1"/>
+<rect x="0" y="930" width="1600" height="150" fill="#0e191c"/>
+
+<text x="48" y="952" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#cfe2e2" letter-spacing="2">KEY INVARIANTS</text>
+<line x1="48" y1="956" x2="770" y2="956" stroke="#233037" stroke-width="1"/>
+<text x="48" y="972" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">1. Always run <tspan font-family="Courier New,monospace" fill="#4fb8ac">/handoff</tspan> before closing. relay.md is what saves you.</text>
+<text x="48" y="990" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">2. Run <tspan font-family="Courier New,monospace" fill="#62c6d6">/setup-project-ai</tspan> once per new repo to wire 4 hooks + the pre-push gate.</text>
+<text x="48" y="1008" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">3. Use <tspan font-family="Courier New,monospace" fill="#4fb8ac">preflight</tspan> agent after writing a plan and before writing code.</text>
+<text x="48" y="1026" font-family="Arial,sans-serif" font-size="11" fill="#8fa3a3">4. Extras off by default — enable only when you need the long-tail skills.</text>
+<text x="48" y="1044" font-family="Arial,sans-serif" font-size="11" fill="#8fa3a3">5. Agents are read-only advisors. They never edit code. Main thread applies their output.</text>
+<text x="48" y="1062" font-family="Arial,sans-serif" font-size="10" fill="#74908f">plugin: claudster@claudster  ·  extras: claudster-extras@claudster  ·  See POSTER 1 for workflow lifecycle</text>
+
+<line x1="790" y1="930" x2="790" y2="1078" stroke="#1e2a30" stroke-width="1"/>
+<text x="810" y="952" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#cfe2e2" letter-spacing="2">ARCHITECTURE NOTES</text>
+<line x1="810" y1="956" x2="1568" y2="956" stroke="#233037" stroke-width="1"/>
+<text x="810" y="972" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">Agents are <tspan font-style="italic">read-only specialists</tspan>. They spawn in isolated contexts, return structured</text>
+<text x="810" y="987" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">reports, and never write code. The main Claude thread applies their output.</text>
+<text x="810" y="1010" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">Skills are prompt templates invoked by <tspan font-family="Courier New,monospace" fill="#d8ad6a">/skill-name</tspan>. Extras add 97 more at the cost of</text>
+<text x="810" y="1025" font-family="Arial,sans-serif" font-size="11" fill="#c3d0d0">token overhead. Toggle extras per session — disable after to restore lean footprint.</text>
+<text x="810" y="1048" font-family="Arial,sans-serif" font-size="10" fill="#8fa3a3">Hooks require /setup-project-ai per project. Global hooks (branch warn, desktop notify) fire everywhere.</text>
+<text x="810" y="1063" font-family="Arial,sans-serif" font-size="10" fill="#74908f">Skills NOT published to junai GitHub: validate_agents.py, vmie/* — run from agent-sandbox only.</text>
+
+</svg>
